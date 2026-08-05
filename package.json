@@ -41,7 +41,7 @@
   ],
   "n8n": {
     "n8nNodesApiVersion": 1,
-    "strict": true,
+    "strict": false,
     "nodes": [
       "dist/nodes/Anydoc/Anydoc.node.js"
     ]
@@ -51,9 +51,9 @@
   },
   "devDependencies": {
     "@n8n/node-cli": "^0.42.0",
-    "eslint": "^10.8.0",
+    "eslint": "^9.39.4",
     "prettier": "^3.9.6",
-    "typescript": "^7.0.2",
+    "typescript": "^5.9.3",
     "vitest": "^4.1.10"
   },
   "peerDependencies": {

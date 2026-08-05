@@ -19,7 +19,8 @@
     "declaration": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "outDir": "./dist/"
+    "outDir": "./dist/",
+    "tsBuildInfoFile": "./node_modules/.cache/anydoc-n8n.tsbuildinfo"
   },
   "include": ["nodes/**/*", "nodes/**/*.json", "package.json"],
   "exclude": ["nodes/**/*.test.ts"]

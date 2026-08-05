@@ -19,9 +19,10 @@ export class Anydoc implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Anydoc',
 		name: 'anydoc',
-		icon: 'file:anydoc.svg',
+		icon: { light: 'file:anydoc.svg', dark: 'file:anydoc.dark.svg' },
 		group: ['transform'],
 		version: 1,
+		subtitle: 'Convert to Markdown',
 		description: 'Convert documents to LLM-friendly Markdown',
 		defaults: {
 			name: 'Anydoc',
@@ -49,16 +50,16 @@ export class Anydoc implements INodeType {
 					{ name: 'Auto Detect', value: AUTO_FORMAT },
 					{ name: 'CSV', value: 'csv' },
 					{ name: 'EPUB', value: 'epub' },
-					{ name: 'Excel (.xls, .xlsx, .xlsm, .xlsb)', value: 'xlsx' },
+					{ name: 'Excel', value: 'xlsx' },
 					{ name: 'OpenDocument Presentation (.odp)', value: 'odp' },
 					{ name: 'OpenDocument Spreadsheet (.ods)', value: 'ods' },
 					{ name: 'OpenDocument Text (.odt)', value: 'odt' },
 					{ name: 'PDF', value: 'pdf' },
-					{ name: 'PowerPoint (.ppt, .pps, .pot)', value: 'ppt' },
-					{ name: 'PowerPoint Open XML (.pptx, .pptm, .ppsx, .ppsm)', value: 'pptx' },
+					{ name: 'PowerPoint (Legacy)', value: 'ppt' },
+					{ name: 'PowerPoint (Open XML)', value: 'pptx' },
 					{ name: 'Rich Text Format (.rtf)', value: 'rtf' },
-					{ name: 'Word (.doc)', value: 'doc' },
-					{ name: 'Word Open XML (.docx, .docm)', value: 'docx' },
+					{ name: 'Word (Legacy)', value: 'doc' },
+					{ name: 'Word (Open XML)', value: 'docx' },
 				],
 			},
 			{
@@ -226,10 +227,6 @@ export class Anydoc implements INodeType {
 						pairedItem: { item: itemIndex },
 					});
 					continue;
-				}
-
-				if (error instanceof NodeOperationError) {
-					throw error;
 				}
 
 				throw new NodeOperationError(this.getNode(), error as Error, {

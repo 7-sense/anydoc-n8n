@@ -1,9 +1,9 @@
 import {
+	Format,
 	formatFromBytes,
 	formatFromExtension,
 	formatFromPath,
 	toMarkdownBytes,
-	type Format,
 } from '@firecrawl/anydoc';
 
 export const AUTO_FORMAT = 'auto';
@@ -16,20 +16,25 @@ export interface ConversionResult {
 }
 
 const MIME_FORMATS: Readonly<Record<string, Format>> = {
-	'application/epub+zip': 'epub',
-	'application/pdf': 'pdf',
-	'application/rtf': 'rtf',
-	'application/vnd.ms-excel': 'xlsx',
-	'application/vnd.ms-powerpoint': 'pptx',
-	'application/vnd.ms-word': 'doc',
-	'application/vnd.oasis.opendocument.presentation': 'odp',
-	'application/vnd.oasis.opendocument.spreadsheet': 'ods',
-	'application/vnd.oasis.opendocument.text': 'odt',
-	'application/vnd.openxmlformats-officedocument.presentationml.presentation': 'pptx',
-	'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'xlsx',
-	'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'docx',
-	'text/csv': 'csv',
-	'text/rtf': 'rtf',
+	'application/epub+zip': Format.epub,
+	'application/msword': Format.doc,
+	'application/pdf': Format.pdf,
+	'application/rtf': Format.rtf,
+	'application/vnd.ms-excel': Format.xlsx,
+	'application/vnd.ms-excel.sheet.binary.macroenabled.12': Format.xlsx,
+	'application/vnd.ms-excel.sheet.macroenabled.12': Format.xlsx,
+	'application/vnd.ms-powerpoint': Format.ppt,
+	'application/vnd.ms-powerpoint.presentation.macroenabled.12': Format.pptx,
+	'application/vnd.ms-powerpoint.slideshow.macroenabled.12': Format.pptx,
+	'application/vnd.ms-word.document.macroenabled.12': Format.docx,
+	'application/vnd.oasis.opendocument.presentation': Format.odp,
+	'application/vnd.oasis.opendocument.spreadsheet': Format.ods,
+	'application/vnd.oasis.opendocument.text': Format.odt,
+	'application/vnd.openxmlformats-officedocument.presentationml.presentation': Format.pptx,
+	'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': Format.xlsx,
+	'application/vnd.openxmlformats-officedocument.wordprocessingml.document': Format.docx,
+	'text/csv': Format.csv,
+	'text/rtf': Format.rtf,
 };
 
 function normalizeMimeType(mimeType?: string): string | undefined {
